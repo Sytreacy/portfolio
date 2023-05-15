@@ -1,1 +1,36 @@
-// window.scrollY;
+let currentLocation = window.scrollY;
+window.addEventListener("scroll", () => {
+    const backToTop = document.getElementsByClassName('back-to-top')[0];
+    if (window.scrollY > 16 || window.scrollY > currentLocation) {
+            backToTop.classList.remove("d-none");
+        } else {
+            backToTop.classList.add("d-none");
+        }
+    currentLocation = window.scrollY;
+})
+
+
+const radios = document.getElementsByTagName("input");
+for (r of radios)  {
+    const id = r.value;
+    r.addEventListener("change", function() {
+        const allblogs = document.getElementsByClassName("blog-content");
+      
+        if(id == "all") {
+            for (a of allblogs) {
+                a.classList.remove("d-none");
+            }
+        }
+        else {
+            for (a of allblogs) {
+                a.classList.add("d-none");
+            }
+            let datasetName = "data-category="+id;
+            let blogs = document.querySelectorAll('[' + datasetName + ']');
+            console.log(datasetName);
+            for (b of blogs) {
+                b.classList.remove("d-none");
+            }
+        }
+    });
+}

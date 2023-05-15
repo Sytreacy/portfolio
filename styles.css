@@ -3,6 +3,7 @@
     --white: 255, 255, 255;
     --blue: 15, 82, 186;
     --green: 138, 162, 160;
+    --dark-green: 81, 119, 124;
     --baby-blue: #D0FDFD;
     --baby-green: #EEFBE5;
 }
@@ -13,6 +14,7 @@
     padding: 0;
     font-family: 'Wix Madefor Text', sans-serif;
     color: rgb(var(--dark));
+    scroll-behavior: smooth;
 }
 
 ul {
@@ -30,6 +32,17 @@ p, li {
 a:link, a:visited {
     text-decoration: none;
     color: rgb(var(--dark));
+}
+
+.back-to-top {
+    fill: rgb(var(--dark-green));
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+}
+
+.back-to-top:hover {
+    fill: rgb(var(--green));
 }
 
 .f-title {
@@ -178,6 +191,7 @@ nav {
     bottom: 2em;
     left: 50%;
     transform: translateX(-50%);
+    fill: rgb(var(--dark-green));
 }
 
 .spacing-container{
@@ -194,6 +208,15 @@ nav {
     margin-bottom: 1em;
 }
 
+a.resume-link {
+    color: rgb(var(--green));
+    text-decoration: underline dotted;
+}
+
+a.resume-link:hover {
+    color: rgb(var(--dark-green));
+}
+
 /* blogs page */
 .radio-wrapper {
     flex-wrap: wrap;
@@ -206,7 +229,7 @@ input[type="radio"] {
 } 
 
 input[type="radio"]:checked + label {
-    background-color: rgb(var(--green));
+    background-color: rgb(var(--dark-green));
     color: rgb(var(--white));
     font-weight: bold;
 } 
@@ -221,11 +244,11 @@ input[type="radio"]:checked + label {
 }
 
 .blog-content > p.f-title a:hover {
-    text-decoration: underline dotted rgb(var(--green));
+    text-decoration: underline dotted rgb(var(--dark-green));
 }
 
 .blog-content > p.f-title:hover ~ p.date{
-    color: rgb(var(--dark));
+    color: rgb(var(--dark-green));
 }
 
 /* resume page */
@@ -260,8 +283,16 @@ input[type="radio"]:checked + label {
     background: rgb(var(--dark));
 }
 
+.session {
+    padding-top: 1em;
+}
+
 .resume_each-content{
     margin: 2em 0 4em;
+}
+
+.resume_each-content > p + p {
+    padding-top: 1em;
 }
 
 .position {
@@ -290,8 +321,15 @@ input[type="radio"]:checked + label {
     padding: 0.25em 0.5em;
     border-radius: 0.5em;
     background-color: rgba(var(--white), 0.4);
-    border: 1px solid rgb(var(--green));
+    border: 1px solid rgb(var(--dark-green));
     height: fit-content;
+}
+
+.radio-containers:hover > label.btn-style {
+    background-color: rgb(var(--dark-green));
+    border: 1px solid rgb(var(--dark-green));
+    color: rgb(var(--white));
+    font-weight: bold;
 }
 
 /* contact me page */
@@ -316,12 +354,12 @@ input[type="radio"]:checked + label {
 @keyframes icon-hover {
     0% {
         opacity: 0.6;
-        fill: rgb(var(--blue));
+        fill: rgb(var(--dark-green));
     }
 
     100% {
         opacity: 1;
-        fill: rgb(var(--dark));
+        fill: rgb(var(--blue));
     }
 }
 
@@ -373,7 +411,7 @@ input[type="radio"]:checked + label {
         position: absolute;
         top: 1rem;
         bottom: 2rem;
-        left: -1em;
+        left: -2em;
     }
 
     .blog-content::before {
@@ -385,7 +423,7 @@ input[type="radio"]:checked + label {
         border: 1px solid;
         position: absolute;
         top: 0.5em;
-        left: -1.28rem;
+        left: -2.28rem;
     }
 
     .blog-content:hover::before {
@@ -400,6 +438,9 @@ input[type="radio"]:checked + label {
 @media all and (min-width: 768px) {
     .wrapper {
         padding: 6em;
+        max-width: 1000px;
+        width: 100%;
+        margin-inline: auto;
     }
 
     .about-me_wrapper {
@@ -407,7 +448,7 @@ input[type="radio"]:checked + label {
     }
 
     .about-me_title::before, .about-me_title::after {
-        all: unset
+        all: unset;
     }
 
     /* resume page */
