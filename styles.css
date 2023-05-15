@@ -1,11 +1,40 @@
-:root {
+body {
     --dark: 23, 21, 21;
     --white: 255, 255, 255;
     --blue: 15, 82, 186;
     --green: 138, 162, 160;
     --dark-green: 81, 119, 124;
-    --baby-blue: #D0FDFD;
-    --baby-green: #EEFBE5;
+}
+
+[color-scheme="dark"] {
+    color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+    }
+}
+
+body.dark {
+    --dark: 250,250,250;
+    --white: 36,41,45;
+    --blue: 208, 253, 253;
+    --green: 165,199,200;
+    --dark-green: 229, 255, 236;
+
+    background-color: rgba(var(--white), 0.9);
+}
+
+body.bg-gradient.dark {
+    background-image: linear-gradient(
+        45deg,
+        hsl(210deg 7% 22%) 0%,
+        hsl(207deg 11% 20%) 20%,
+        hsl(210deg 11% 18%) 38%,
+        hsl(206deg 11% 12%) 59%,
+        hsl(0deg 0% 0%) 99%
+    );
 }
 
 *, *::before, *::after {
@@ -143,6 +172,10 @@ nav {
     z-index: 2;
 }
 
+svg.themes {
+    cursor: pointer;
+}
+
 .grid-container {
     grid-template-columns: 1fr auto;
     align-items: center;
@@ -170,6 +203,10 @@ nav {
 
 .links:hover {
     font-weight: bold;
+}
+
+svg{
+    fill: rgb(var(--dark));
 }
 
 .name-container {
@@ -233,6 +270,13 @@ input[type="radio"]:checked + label {
     color: rgb(var(--white));
     font-weight: bold;
 } 
+
+.radio-containers:hover > label.btn-style {
+    background-color: rgb(var(--dark-green));
+    border: 1px solid rgb(var(--dark-green));
+    color: rgb(var(--white));
+    font-weight: bold;
+}
 
 .blog-content {
     margin: 2em 0 1em;
@@ -325,11 +369,49 @@ input[type="radio"]:checked + label {
     height: fit-content;
 }
 
-.radio-containers:hover > label.btn-style {
-    background-color: rgb(var(--dark-green));
-    border: 1px solid rgb(var(--dark-green));
-    color: rgb(var(--white));
+.download-resume {
+    padding: 1em;
+    background: transparent;
+    border: 1px solid;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.download-resume > p {
+    padding-left: 1em;
+}
+
+.download-resume:hover {
+    animation: border 0.5s infinite linear;
     font-weight: bold;
+}
+
+.download-resume:hover > svg {
+    animation: svg-color-change 0.5s infinite linear;
+}
+
+.download-resume:hover > p {
+    color: rgb(var(--dark-green));
+}
+
+@keyframes border {
+    0% {
+        border-color: rgb(var(--green));
+    }
+    
+    100% {
+        border-color: rgb(var(--dark-green));
+    }
+}
+
+@keyframes svg-color-change {
+    0% {
+        fill: rgb(var(--green));
+    }
+    
+    100% {
+        fill: rgb(var(--dark-green));
+    }
 }
 
 /* contact me page */
@@ -368,6 +450,7 @@ input[type="radio"]:checked + label {
         padding: 1em;
     }
 }
+
 @media all and (min-width: 576px) {
     .links-container {
         left: unset;
