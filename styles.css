@@ -77,7 +77,6 @@ a:link, a:visited {
 
 .back-to-top {
     fill: rgb(var(--dark-green));
-    position: fixed;
     bottom: 1em;
     right: 1em;
 }
@@ -103,6 +102,10 @@ a:link, a:visited {
 
 .p-absolute {
     position: absolute;
+}
+
+.p-fixed {
+    position: fixed;
 }
 
 .d-grid {
@@ -174,14 +177,19 @@ a:link, a:visited {
 }
 
 nav {
-    position: fixed;
-    padding: 1em;
     top: 0;
     left: 0;
     width: 100%;
     background: rgba(var(--white),0.5);
     backdrop-filter: blur(2px);
     z-index: 2;
+}
+
+.themes-container {
+    text-align: end;
+    z-index: 3;
+    top: 1em;
+    right: 1em;
 }
 
 svg.themes {
@@ -200,7 +208,6 @@ svg.themes {
     rotate: 180deg;
     width: fit-content;
     flex-direction: row-reverse;
-    position: fixed;
     left: 10px;
     z-index: 1;
 }
