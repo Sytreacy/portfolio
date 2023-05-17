@@ -5,7 +5,7 @@ for (const theme of themes) {
         if (theme.dataset.theme === 'light') {
             themes[1].classList.remove('d-none');
         }
-        if (theme.dataset.theme === 'dark') { 
+        if (theme.dataset.theme === 'dark') {
             themes[0].classList.remove('d-none');
         }
         theme.classList.toggle('d-none');
@@ -13,28 +13,33 @@ for (const theme of themes) {
     })
 }
 
-let currentLocation = window.scrollY;
-window.addEventListener("scroll", () => {
-    const backToTop = document.getElementsByClassName('back-to-top')[0];
-    const topNav = document.getElementsByTagName('nav')[0];
-    if (window.scrollY > 16 || window.scrollY > currentLocation) {
+const currentPage = window.location.pathname;
+const contactPage = '/portfolio/contact.html';
+
+if (currentPage !== contactPage) {
+    let currentLocation = window.scrollY;
+    window.addEventListener("scroll", () => {
+        const backToTop = document.getElementsByClassName('back-to-top')[0];
+        const topNav = document.getElementsByTagName('nav')[0];
+
+        if (window.scrollY > 16 || window.scrollY > currentLocation) {
             backToTop.classList.remove("d-none");
             topNav.classList.remove("d-none");
-    } else {
-        backToTop.classList.add("d-none");
-        topNav.classList.add("d-none");
-    }
-    currentLocation = window.scrollY;
-})
-
+        } else {
+            backToTop.classList.add("d-none");
+            topNav.classList.add("d-none");
+        }
+        currentLocation = window.scrollY;
+    })
+}
 
 const radios = document.getElementsByTagName("input");
-for (r of radios)  {
+for (r of radios) {
     const id = r.value;
-    r.addEventListener("change", function() {
+    r.addEventListener("change", function () {
         const allblogs = document.getElementsByClassName("blog-content");
-      
-        if(id == "all") {
+
+        if (id == "all") {
             for (a of allblogs) {
                 a.classList.remove("d-none");
             }
@@ -43,9 +48,9 @@ for (r of radios)  {
             for (a of allblogs) {
                 a.classList.add("d-none");
             }
-            let datasetName = "data-category="+id;
+            let datasetName = "data-category=" + id;
             let blogs = document.querySelectorAll('[' + datasetName + ']');
-            
+
             for (b of blogs) {
                 b.classList.remove("d-none");
             }
@@ -53,7 +58,10 @@ for (r of radios)  {
     });
 }
 
-const dl_btn = document.querySelector('.download-resume');
-dl_btn.addEventListener('click', () => {
-   window.open('Win Win Maw.pdf', '_blank');
-});
+const resumePage = '/portfolio/resume.html';
+if (currentPage === resumePage) {
+    const dl_btn = document.querySelector('.download-resume');
+    dl_btn.addEventListener('click', () => {
+        window.open('Win Win Maw.pdf', '_blank');
+    });
+}
