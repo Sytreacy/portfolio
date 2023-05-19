@@ -2,15 +2,30 @@ const themes = document.getElementsByClassName('themes');
 
 for (const theme of themes) {
     theme.addEventListener("click", () => {
+
         if (theme.dataset.theme === 'light') {
             themes[1].classList.remove('d-none');
+            localStorage.setItem('theme', 'dark');
         }
         if (theme.dataset.theme === 'dark') {
             themes[0].classList.remove('d-none');
+            localStorage.setItem('theme', 'light');
         }
+        
         theme.classList.toggle('d-none');
         document.body.classList.toggle('dark');
     })
+}
+
+if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.remove('dark');
+    themes[0].classList.remove('d-none');
+    themes[1].classList.add('d-none');
+}
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+    themes[0].classList.add('d-none');
+    themes[1].classList.remove('d-none');
 }
 
 const currentPage = window.location.pathname;
