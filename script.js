@@ -73,10 +73,28 @@ for (r of radios) {
     });
 }
 
+const resumeCV = '/portfolio/resume.html';
+if (currentPage === resumeCV) {
+    const dl_cv_btn = document.querySelector('.download-cv');
+    dl_cv_btn.addEventListener('click', () => {
+        window.open('Win Win Maw_cv.pdf', '_blank');
+    });
+}
+
+
 const resumePage = '/portfolio/resume.html';
 if (currentPage === resumePage) {
     const dl_btn = document.querySelector('.download-resume');
     dl_btn.addEventListener('click', () => {
         window.open('Win Win Maw.pdf', '_blank');
+    });
+}
+
+
+const resumeJpPage = '/portfolio/resume.html';
+if (currentPage === resumeJpPage) {
+    const dl_btn = document.querySelector('.download-jp-cv');
+    dl_btn.addEventListener('click', () => {
+        window.open('履歴書（ウィンウィンモー） IT.docx', '_blank');
     });
 }
