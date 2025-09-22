@@ -479,7 +479,7 @@ input[type="radio"]:checked+label {
 }
 
 @media all and (max-width: 576px) {
-    .dl-eng-container>button+button {
+    .dl-eng-container>button+button, .dl-jp-container>button+button {
         margin-top: 1em;
     }
 }
@@ -527,7 +527,7 @@ input[type="radio"]:checked+label {
         width: 97%;
     }
 
-    .dl-eng-container {
+    .dl-eng-container, .dl-jp-container {
         display: flex;
         gap: 1em;
     }

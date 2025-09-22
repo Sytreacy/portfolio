@@ -98,3 +98,11 @@ if (currentPage === resumeJpPage) {
         window.open('履歴書（ウィンウィンモー） IT.docx', '_blank');
     });
 }
+
+const resumeJpPg = '/portfolio/resume.html';
+if (currentPage === resumeJpPg) {
+    const dl_btn = document.querySelector('.download-jp-resume');
+    dl_btn.addEventListener('click', () => {
+        window.open('職務経歴書ウィンウィンモー.doc', '_blank');
+    });
+}
