@@ -86,7 +86,7 @@ const resumePage = '/portfolio/resume.html';
 if (currentPage === resumePage) {
     const dl_btn = document.querySelector('.download-resume');
     dl_btn.addEventListener('click', () => {
-        window.open('Win Win Maw.pdf', '_blank');
+        window.open('Win Win Maw resume.pdf', '_blank');
     });
 }
 
@@ -95,7 +95,7 @@ const resumeJpPage = '/portfolio/resume.html';
 if (currentPage === resumeJpPage) {
     const dl_btn = document.querySelector('.download-jp-cv');
     dl_btn.addEventListener('click', () => {
-        window.open('履歴書（ウィンウィンモー） IT.docx', '_blank');
+        window.open('履歴書（ウィンウィンモー).pdf', '_blank');
     });
 }
 
@@ -103,6 +103,6 @@ const resumeJpPg = '/portfolio/resume.html';
 if (currentPage === resumeJpPg) {
     const dl_btn = document.querySelector('.download-jp-resume');
     dl_btn.addEventListener('click', () => {
-        window.open('職務経歴書ウィンウィンモー.doc', '_blank');
+        window.open('職務経歴書 ウィンウィンモー.pdf', '_blank');
     });
 }
