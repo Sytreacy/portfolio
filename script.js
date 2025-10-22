@@ -1,3 +1,4 @@
+// change themes
 const themes = document.getElementsByClassName('themes');
 
 for (const theme of themes) {
@@ -11,7 +12,7 @@ for (const theme of themes) {
             themes[0].classList.remove('d-none');
             localStorage.setItem('theme', 'light');
         }
-        
+
         theme.classList.toggle('d-none');
         document.body.classList.toggle('dark');
     })
@@ -28,6 +29,67 @@ if (localStorage.getItem('theme') === 'dark') {
     themes[1].classList.remove('d-none');
 }
 
+
+// change language
+const lans = document.getElementsByClassName('lans');
+
+// set local storage value
+function toggleLan(a, lans) {
+    if (a == lans[0]) {
+        localStorage.setItem('lan', 'jp');
+    } else if (a == lans[1]) {
+        localStorage.setItem('lan', 'en');
+    }
+}
+
+function changeVersion(selectedLanguage) {
+    let currentPage = window.location.pathname;
+
+    if (selectedLanguage === 'en') {
+        if (!currentPage.includes('-en.html')) {
+            let newUrl = currentPage.replace('.html', '-en.html');
+            window.location.href = newUrl;
+        }
+    }
+    else if (selectedLanguage === 'jp') {
+        if (currentPage.includes('-en.html')) {
+            let newUrl = currentPage.replace('-en.html', '.html');
+            window.location.href = newUrl;
+        }
+    }
+}
+
+
+function initializePage() {
+    const selectedLanguage = localStorage.getItem('lan');
+     for (const l of lans) {
+        if (l.classList.contains('default-lan')) {
+            toggleLan(l, lans); 
+        }
+    }
+    changeVersion(selectedLanguage); 
+}
+
+for (const language of lans) {
+    language.addEventListener("click", () => {
+        for (const lan of lans) {
+            lan.classList.remove("default-lan");
+        }
+        language.classList.add("default-lan");
+
+        toggleLan(language,lans);
+        
+        const selectedLan = localStorage.getItem('lan');
+        changeVersion(selectedLan);
+
+    })
+}
+
+window.onload = function () {
+    initializePage();
+}
+
+// back to top
 const currentPage = window.location.pathname;
 const contactPage = '/portfolio/contact.html';
 
@@ -48,6 +110,7 @@ if (currentPage !== contactPage) {
     })
 }
 
+// blog page filter
 const radios = document.getElementsByTagName("input");
 for (r of radios) {
     const id = r.value;
@@ -72,6 +135,9 @@ for (r of radios) {
         }
     });
 }
+
+
+// download cv & resume
 
 const resumeCV = '/portfolio/resume.html';
 if (currentPage === resumeCV) {

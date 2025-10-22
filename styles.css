@@ -182,14 +182,30 @@ nav {
     z-index: 2;
 }
 
-.themes-container {
+.lan-themes-container {
     text-align: end;
     z-index: 3;
     top: 1em;
     right: 1em;
+    gap: 1em;
+    align-items: center;
 }
 
-svg.themes {
+.change-lan {
+    gap: 0.5em;
+    align-items: center;
+}
+
+svg.lans{
+    width: 2.4em;
+    height: fit-content;
+}
+
+.jp-lan{
+    border: 1px solid rgb(var(--dark-green));
+}
+
+svg {
     cursor: pointer;
 }
 
@@ -201,7 +217,7 @@ svg.themes {
 .links-container {
     height: 100%;
     gap: 2em;
-    writing-mode: vertical-lr;
+    writing-mode: sideways-rl;
     rotate: 180deg;
     width: fit-content;
     flex-direction: row-reverse;
@@ -303,7 +319,7 @@ input[type="radio"]:checked+label {
     font-size: 0.9rem;
 }
 
-.blog-content>p.f-title a:hover {
+.blog-content>p.f-title a:hover, .txt-underline {
     text-decoration: underline dotted rgb(var(--dark-green));
 }
 
@@ -369,11 +385,15 @@ input[type="radio"]:checked+label {
     flex-direction: column;
 }
 
-.skill-containers+.skill-containers {
+.skills-container, .skills:last-child{
+    padding-bottom: 1em;
+}
+
+.skills+.skills, .skill-containers+.skill-containers {
     margin-top: 1.5em;
 }
 
-.skill-containers>div {
+.skills-container, .skill-containers>div {
     gap: 0.5em;
     flex-wrap: wrap;
     padding-top: 0.5em;
