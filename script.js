@@ -30,52 +30,6 @@ if (localStorage.getItem('theme') === 'dark') {
 }
 
 
-// change language
-const lans = document.getElementsByClassName('lans');
-
-function toggleLan(language) {
-    localStorage.setItem('lan', language === lans[0] ? 'jp' : 'en');
-}
-
-function changeVersion() {
-    const currentPage = window.location.pathname;
-    const language = localStorage.getItem('lan');
-    let newUrl = currentPage;
-
-    if (language === 'en' && !currentPage.includes('-en.html')) {
-        newUrl = currentPage.replace('.html', '-en.html');
-    } else if (language === 'jp' && currentPage.includes('-en.html')) {
-        newUrl = currentPage.replace('-en.html', '.html');
-    }
-
-    if (newUrl !== currentPage) {
-        window.location.href = newUrl;
-    }
-}
-
-function initializePage() {
-    const selectedLanguage = localStorage.getItem('lan');
-    for (let i = 0; i < lans.length; i++) {
-        if (lans[i].classList.contains('default-lan')) {
-            toggleLan(lans[i]);
-        }
-    }
-    changeVersion();
-}
-
-for (let i = 0; i < lans.length; i++) {
-    lans[i].addEventListener("click", function () {
-        for (let j = 0; j < lans.length; j++) {
-            lans[j].classList.remove("default-lan");
-        }
-        lans[i].classList.add("default-lan");
-        toggleLan(lans[i]);
-        changeVersion();
-    });
-}
-
-window.onload = initializePage;
-
 // back to top
 const currentPage = window.location.pathname;
 const contactPage = '/portfolio/contact.html';
