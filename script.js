@@ -33,61 +33,48 @@ if (localStorage.getItem('theme') === 'dark') {
 // change language
 const lans = document.getElementsByClassName('lans');
 
-// set local storage value
-function toggleLan(a, lans) {
-    if (a == lans[0]) {
-        localStorage.setItem('lan', 'jp');
-    } else if (a == lans[1]) {
-        localStorage.setItem('lan', 'en');
-    }
+function toggleLan(language) {
+    localStorage.setItem('lan', language === lans[0] ? 'jp' : 'en');
 }
 
-function changeVersion(selectedLanguage) {
-    let currentPage = window.location.pathname;
+function changeVersion() {
+    const currentPage = window.location.pathname;
+    const language = localStorage.getItem('lan');
+    let newUrl = currentPage;
 
-    if (selectedLanguage === 'en') {
-        if (!currentPage.includes('-en.html')) {
-            let newUrl = currentPage.replace('.html', '-en.html');
-            window.location.href = newUrl;
-        }
+    if (language === 'en' && !currentPage.includes('-en.html')) {
+        newUrl = currentPage.replace('.html', '-en.html');
+    } else if (language === 'jp' && currentPage.includes('-en.html')) {
+        newUrl = currentPage.replace('-en.html', '.html');
     }
-    else if (selectedLanguage === 'jp') {
-        if (currentPage.includes('-en.html')) {
-            let newUrl = currentPage.replace('-en.html', '.html');
-            window.location.href = newUrl;
-        }
+
+    if (newUrl !== currentPage) {
+        window.location.href = newUrl;
     }
 }
-
 
 function initializePage() {
     const selectedLanguage = localStorage.getItem('lan');
-     for (const l of lans) {
-        if (l.classList.contains('default-lan')) {
-            toggleLan(l, lans); 
+    for (let i = 0; i < lans.length; i++) {
+        if (lans[i].classList.contains('default-lan')) {
+            toggleLan(lans[i]);
         }
     }
-    changeVersion(selectedLanguage); 
+    changeVersion();
 }
 
-for (const language of lans) {
-    language.addEventListener("click", () => {
-        for (const lan of lans) {
-            lan.classList.remove("default-lan");
+for (let i = 0; i < lans.length; i++) {
+    lans[i].addEventListener("click", function () {
+        for (let j = 0; j < lans.length; j++) {
+            lans[j].classList.remove("default-lan");
         }
-        language.classList.add("default-lan");
-
-        toggleLan(language,lans);
-        
-        const selectedLan = localStorage.getItem('lan');
-        changeVersion(selectedLan);
-
-    })
+        lans[i].classList.add("default-lan");
+        toggleLan(lans[i]);
+        changeVersion();
+    });
 }
 
-window.onload = function () {
-    initializePage();
-}
+window.onload = initializePage;
 
 // back to top
 const currentPage = window.location.pathname;
