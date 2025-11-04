@@ -51,6 +51,15 @@ if (currentPage !== contactPage) {
     })
 }
 
+// project page zoom document.body.style.overflow = 'hidden';
+// const sm = document.querySelector('.sitemap img');
+// const pj_con = document.getElementsByClassName("proj-container")[0];
+// sm.addEventListener("click", () => {
+//     pj_con.classList.add("h-100");
+//     sm.classList.add("sitemap-open");
+    
+// })
+
 // blog page filter
 const radios = document.getElementsByTagName("input");
 for (r of radios) {
