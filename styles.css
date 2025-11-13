@@ -96,7 +96,7 @@ a:visited {
 .container {
     max-width: 1400px;
     margin: 0 auto;
-    padding-left: 1em;
+    padding: 1em;
 }
 
 .p-relative {
@@ -248,12 +248,12 @@ svg {
 }
 
 .name {
-    font-size: 5rem;
+    font-size: 3.5rem;
 }
 
 .career {
     left: 60%;
-    bottom: -1em;
+    bottom: -3em;
 }
 
 .icon_down-arrow {
@@ -304,7 +304,7 @@ a.resume-link:hover {
     aspect-ratio: 1/1.8;
 }
 
-.sitemap{
+.sitemap {
     padding-bottom: 2em;
 }
 
@@ -552,8 +552,9 @@ span {
 }
 
 @media all and (min-width: 400px) {
-    .container {
-        padding: 1em;
+
+    .name {
+        font-size: 4rem;
     }
 
     /* contact page */
@@ -563,6 +564,14 @@ span {
 }
 
 @media all and (min-width: 576px) {
+    .name {
+        font-size: 5rem;
+    }
+
+    .career {
+        bottom: -1em;
+    }
+
     .links-container {
         left: unset;
     }
